@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 🔹 Background Video - Covers Full Screen */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Keeps the video in the background */
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 30px;  /* Reduced padding */
+    background: rgb(0, 0, 0);
+    position: fixed;
+    top: 20px;  /* Adjusted from 0 to 20px */
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+}
+
+.logo {
+    width: 50px; /* Adjust as needed */
+    height: auto;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+
+/* Push content above the footer */
+.content {
+    flex: 1; /* This pushes the footer to the bottom */
+    padding-bottom: 80px; /* Ensures space for footer */
+}
+
+
+/* 🔹 Navigation */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+
+
+h1 {
+    font-size: 25px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+nav ul li select {
+    font-size: 16px;
+    padding: 5px;
+}
+
+/* 🔹 Welcome Section */
+.welcome {
+    margin: 80px auto 20px; /* Leaves space below the fixed header */
+    font-size: 20px;
+    font-weight: bold;
+    background: rgb(0, 0, 0);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+/* Fix Topic Overflow */
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px; /* Increased padding to shift it downward */
+    margin-top: 50px; /* Added margin for extra spacing */
+}
+
+.topic {
+    width: 30%;
+    background: rgba(11, 3, 3, 0.948);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    margin-top: 20px; /* Added margin to push it down slightly */
+}
+
+.welcome {
+    margin: 180px auto 30px; /* Increased margin-top for better spacing */
+}
+
+.topic:hover {
+    transform: scale(1.05);
+}
+
+.topic.active {
+    width: 60%;
+    transition: all 0.5s ease;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+}
+
+
+
+
+.back-button:hover {
+    background-color: #cc0000;
+}
+
+
+
+/* 🔹 Inside Topic Containers */
+.sub-container {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+.sub-container:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Fixed Footer */
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    z-index: 1000;
+}
+
+body {
+    padding-bottom: 80px; /* Adjust this based on footer height */
+}
+
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: 23%;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adds spacing between charts */
+    padding: 20px;
+}
+
+.chart-item {
+    flex: 1 1 calc(33.33% - 20px); /* Ensures 3 charts per row */
+    max-width: 30%; /* Limits each chart width */
+    height: 300px; /* Fixed height for consistency */
+}
+
+
+
+
+canvas {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+

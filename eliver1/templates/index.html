@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Data Analytics on Motor Vehicle Registration, Traffic Violation, and Driver Licensing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="static/logo1.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    
+    
+
+    <script>
+        function filterTopics() {
+            let filter = document.getElementById("topic-filter").value;
+            let topics = document.querySelectorAll(".topic");
+    
+            if (filter === "hide-all") {
+                topics.forEach(topic => {
+                    topic.style.display = "none";
+                });
+            } else {
+                topics.forEach(topic => {
+                    topic.style.display = filter === "all" || topic.id === filter ? "block" : "none";
+                    topic.style.margin = topic.id === filter ? "auto" : "";
+                });
+            }
+        }
+
+        function moveToCenter(element) {
+            // Reset all topics
+            let topics = document.querySelectorAll(".topic");
+            topics.forEach(topic => {
+                topic.style.position = "static";
+                topic.style.transform = "none";
+                topic.style.transition = "all 0.5s ease-in-out";
+                topic.style.zIndex = "1";
+                topic.style.width = "30%";
+            });
+    
+            // Move clicked topic to center
+            element.style.position = "fixed";
+            element.style.top = "50%";
+            element.style.left = "50%";
+            element.style.transform = "translate(-50%, -50%) scale(1.2)";
+            element.style.zIndex = "100";
+            element.style.width = "50%";
+            element.style.background = "rgba(255, 255, 255, 0.8)";
+            element.style.color = "black";
+            element.style.border = "2px solid white";
+            element.style.padding = "20px";
+            element.style.borderRadius = "10px";
+            element.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5)";
+        }
+    
+        // Function to reset all topics when clicking outside
+        document.addEventListener("click", function(event) {
+            let topics = document.querySelectorAll(".topic");
+            if (!event.target.closest(".topic")) {
+                topics.forEach(topic => {
+                    topic.style.position = "static";
+                    topic.style.transform = "none";
+                    topic.style.transition = "all 0.5s ease-in-out";
+                    topic.style.zIndex = "1";
+                    topic.style.width = "30%";
+                    topic.style.background = "rgba(255, 255, 255, 0.2)";
+                    topic.style.color = "white";
+                    topic.style.border = "none";
+                    topic.style.boxShadow = "none";
+                });
+            }
+        });
+
+        // Function to Reset Page (Scroll to Top)
+        function resetPage() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Function to Scroll to a Specific Section
+        function scrollToSection(sectionId) {
+            let section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Function to Show Contact Pop-up
+        function trafficViolationWarning() {
+            alert("⚠ Warning: UNDER CONSTRUCTION !!! ");
+        }
+
+        // Scroll to About Us Section
+    function scrollToAbout() {
+        document.getElementById("about-us").scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.querySelector('a[href="#contact"]').addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("Contact Us:\n📞 Phone: +1 234 567 890\n📧 Email: contact@example.com");
+    });
+
+
+    </script>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="static/background2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <header>
+            <div class="header-left">
+                <img src="static/logo1.png" alt="Logo" id="logo" style="height: 80px; cursor: pointer;" onclick="resetPage()">
+                <h1>Comprehensive Data Analytics on Motor Vehicle Registration, Traffic Violation, and Driver Licensing</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="resetPage()">Home</a></li>
+                    <li><a href="#" onclick="scrollToSection('about-us')">About Us</a></li>
+                    <li><a href="#" onclick="showContactPopup()">Contact</a></li>
+                    <li>
+                        <select id="topic-filter" onchange="filterTopics()">
+                            <option value="all">Show All</option>
+                            <option value="licensed-driver">Licensed Driver</option>
+                            <option value="vehicle-registration">Motor Vehicle Registration</option>
+                            <option value="traffic-violation">Traffic Violation</option>
+                            <option value="hide-all">Hide All</option>
+                        </select>
+                        
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="welcome">
+            <p>"Safe driving today ensures a brighter future for everyone on the road."</p>
+        </section>
+
+        
+
+        <main>
+            
+            <section class="topics">
+                <div class="topic" id="licensed-driver" onclick="moveToCenter(this)">
+                    <h2>Licensed Driver</h2>
+                    <p>Analysis and statistics on licensed drivers across different years and states.</p>
+                    <canvas id="genderChart"></canvas>
+                    <canvas id="topStatesChart"></canvas>
+                    <canvas id="ageChart"></canvas>
+                </div>
+                
+                <div class="topic" id="vehicle-registration" onclick="moveToCenter(this)">
+                    <h2>Motor Vehicle Registration</h2>
+                    <p>Comprehensive data on vehicle registration trends and patterns.</p>
+                    <canvas id="autoChart"></canvas>
+                    <canvas id="busesTrucksChart"></canvas>
+                    <canvas id="motorcycleChart"></canvas>
+                </div>
+                
+                <div class="topic" id="traffic-violation" onclick="moveToCenter(this)">
+                    <h2>Traffic Violation</h2>
+                    <p>Insights into traffic violations and their impact on road safety.</p>
+                    <canvas id="subAgenciesChart"></canvas>
+                    <canvas id="violationsChart"></canvas>
+                    <canvas id="vehicleTypesChart"></canvas>
+                </div>
+            </section>
+            
+        </main>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        
+            <div class="footer-content">
+                <div class="footer-section" id="about-us">
+                    <h3>About Us</h3>
+                    <p>We are a dedicated data analytics firm specializing in motor vehicle registration, traffic violations, and driver licensing. Our goal is to provide insightful, data-driven solutions that enhance road safety, streamline compliance, and improve the efficiency of motor vehicle administration. With expertise in data science, automation, and industry regulations, we help organizations and government agencies make informed decisions.</p>
+                </div>
+                <div class="footer-section" id="source">
+                    <h3>Source</h3>
+                    <p>www.Data.gov</p>
+                    <p>www.Kaggle.com</p>
+                </div>
+                <div class="footer-section" id="why-this-topic">
+                    <h3>Why We Chose This Topic</h3>
+                    <p>Explanation of the importance of road safety and its impact.</p>
+                </div>
+                <div class="footer-section" id="why-choose-us">
+                    <h3>Reference</h3>
+                    <p> www.Friendster.com</p>
+                    <p> www.LTO.gov.ph</p>
+                </div>
+            </div>
+            <br></br>
+            <footer>
+            
+                <p>&copy; 2025 author: Eliver Gio G. Maquilang. All rights reserved.</p>
+        
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+
+.content {
+    position: relative;
+    z-index: 3;
+    padding-top: 40px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+}
+
+h1 {
+    text-align: left;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.welcome {
+    margin: 160px auto 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.topic {
+    width: 30%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.topic:hover {
+    transform: scale(1.05);
+}
+
+.sub-container {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-top: 20px;
+}
+</style>
